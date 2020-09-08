@@ -121,3 +121,19 @@ class TimerStep:
 
     def get_sec(self):
         return self.current_delay - (time.monotonic() - self.last_time)
+
+
+class TimerLast:
+    """Отдаёт количество секунд прошедшее с момента последнего запроса."""
+    def __init__(self):
+        self.time_last = None
+        self.time_left = None
+
+    def get_sec(self):
+        if not self.time_last:
+            self.time_last = time.monotonic()
+            return 0
+        else:
+            self.time_left = time.monotonic() - self.time_last
+            self.time_last = time.monotonic()
+            return self.time_left
