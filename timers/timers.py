@@ -8,7 +8,7 @@ def check_data(data, minimum, name):
         else:
             raise ValueError(f"{name}: Значение {data} не должно быть меньше {minimum}.")
     else:
-        raise TypeError(f"{name}: Тип {data} = {type(data)}, а должен быть int или float.")
+        raise TypeError(f"{name}: {data} имеет {type(data)}, а должен быть int или float.")
 
 
 class TimerPlus:
@@ -18,7 +18,7 @@ class TimerPlus:
     """
     def __init__(self, sec):
         self.name = "TimerPlus"
-        self.minimum = 0.05
+        self.minimum = 0.00001
         check_data(sec, self.minimum, self.name)
         self.last_time = None
         self.sec = sec
@@ -49,7 +49,7 @@ class TimerMinus:
     """
     def __init__(self, sec):
         self.name = "TimerMinus"
-        self.minimum = 0.05
+        self.minimum = 0.00001
         check_data(sec, self.minimum, self.name)
         self.last_time = None
         self.sec = sec
@@ -83,7 +83,8 @@ class TimerStep:
     """
     def __init__(self, min_s, max_s, multiplier):
         self.name = "TimerStep"
-        check_data(min_s, 0.0001, self.name + " arg(1)")
+        self.minimum = 0.00001
+        check_data(min_s, self.minimum, self.name + " arg(1)")
         check_data(max_s, min_s, self.name + " arg(2)")
         check_data(multiplier, 1, self.name + " arg(3)")
         self.min_s = min_s
@@ -94,7 +95,7 @@ class TimerStep:
         self.restart()
 
     def set_timer(self, min_s, max_s, multiplier):
-        check_data(min_s, 0.0001, self.name + " arg(1)")
+        check_data(min_s, self.minimum, self.name + " arg(1)")
         check_data(max_s, min_s, self.name + " arg(2)")
         check_data(multiplier, 1, self.name + " arg(3)")
         self.min_s = min_s
