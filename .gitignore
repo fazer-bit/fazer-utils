@@ -1,6 +1,7 @@
 
 # .gitignore for pycharm venv
 
+/run.py
 .idea/
 
 ### Python ###

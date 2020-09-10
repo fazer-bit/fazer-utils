@@ -12,3 +12,5 @@ import timers
 # r = TimerPlus(7)
 e = TimerStep(1,1,1)
 print(e.__class__)
+from setuptools import setup, find_packages
+print(find_packages())
