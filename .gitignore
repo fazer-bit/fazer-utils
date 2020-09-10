@@ -1,7 +1,7 @@
 
 # .gitignore for pycharm venv
 
-/run.py
+run.py
 .idea/
 
 ### Python ###
@@ -29,7 +29,7 @@ share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-MANIFEST
+MANIFEST.in
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -45,4 +45,4 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-# /.gitignore
+
