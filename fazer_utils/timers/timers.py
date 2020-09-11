@@ -18,7 +18,7 @@ class TimerPlus:
     """
     def __init__(self, sec):
         self.name = "TimerPlus"
-        self.minimum = 0.00001
+        self.minimum = 0.0000000001
         check_data(sec, self.minimum, self.name)
         self.last_time = None
         self.sec = sec
@@ -49,7 +49,7 @@ class TimerMinus:
     """
     def __init__(self, sec):
         self.name = "TimerMinus"
-        self.minimum = 0.00001
+        self.minimum = 0.0000000001
         check_data(sec, self.minimum, self.name)
         self.last_time = None
         self.sec = sec
@@ -83,7 +83,7 @@ class TimerStep:
     """
     def __init__(self, min_s, max_s, multiplier):
         self.name = "TimerStep"
-        self.minimum = 0.00001
+        self.minimum = 0.0000000001
         check_data(min_s, self.minimum, self.name + " arg(1)")
         check_data(max_s, min_s, self.name + " arg(2)")
         check_data(multiplier, 1, self.name + " arg(3)")
