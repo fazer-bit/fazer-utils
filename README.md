@@ -8,8 +8,8 @@
 ### Инсталляция
     pip install git+https://github.com/fazer-bit/fazer-utils.git
 ## Утилиты
-### timers
->* **TimerPlus**
+### fazer_utils.timers
+* **TimerPlus**
 >
 >       from fazer_utils.timers import TimerPlus
 >    
@@ -25,14 +25,14 @@
 > При запросе отдаёт False, если указанное количество секунд не достигнуто 
 > или True, если временная отметка пройдена.
 
-> * **TimerMinus**
+* **TimerMinus**
 >
 > Полный аналог **TimerPlus**, за исключением того, что 
 > **get_bool()** отдаёт **True**, если временная отметка не достигнута и
 > **False** в случае прохождения.
 
 
->* **TimerStep**
+* **TimerStep**
 >
 >       from fazer_utils.timers import TimerStep
 >    
@@ -52,7 +52,7 @@
 > Метод **restart()** перезапускает таймер с минимума.
 > **TimerStep** полезен, как таймаут, при множественных ошибках подключения к сети.
 
->* **TimerLast**
+* **TimerLast**
 >
 >       from fazer_utils.timers import TimerLast
 >    
