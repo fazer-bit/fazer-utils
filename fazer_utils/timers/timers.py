@@ -32,14 +32,12 @@ class TimerPlus:
         """Сбросить таймер в минимум"""
         self.last_time = time.monotonic()
 
-    def get_bool(self):
+    def get(self):
+        s = self.sec - (time.monotonic() - self.last_time)
         if time.monotonic() - self.last_time >= self.sec:
-            return True
+            return True, s
         else:
-            return False
-
-    def get_sec(self):
-        return self.sec - (time.monotonic() - self.last_time)
+            return False, s
 
 
 class TimerMinus:
@@ -63,14 +61,12 @@ class TimerMinus:
         """Сбросить таймер в минимум"""
         self.last_time = time.monotonic()
 
-    def get_bool(self):
+    def get(self):
+        s = self.sec - (time.monotonic() - self.last_time)
         if time.monotonic() - self.last_time <= self.sec:
-            return True
+            return True, s
         else:
-            return False
-
-    def get_sec(self):
-        return self.sec - (time.monotonic() - self.last_time)
+            return False, s
 
 
 class TimerStep:
@@ -114,14 +110,12 @@ class TimerStep:
         if self.current_delay > self.max_s:
             self.current_delay = self.max_s
 
-    def get_bool(self):
+    def get(self):
+        s = self.current_delay - (time.monotonic() - self.last_time)
         if time.monotonic() - self.last_time >= self.current_delay:
-            return True
+            return True, s
         else:
-            return False
-
-    def get_sec(self):
-        return self.current_delay - (time.monotonic() - self.last_time)
+            return False, s
 
 
 class TimerLast:
@@ -130,7 +124,7 @@ class TimerLast:
         self.time_last = None
         self.time_left = None
 
-    def get_sec(self):
+    def get(self):
         if not self.time_last:
             self.time_last = time.monotonic()
             return 0
