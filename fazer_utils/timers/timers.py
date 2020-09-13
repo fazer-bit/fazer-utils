@@ -124,11 +124,13 @@ class TimerLast:
         self.time_last = None
         self.time_left = None
 
+    def restart(self):
+        self.time_last = time.monotonic()
+
     def get(self):
         if not self.time_last:
             self.time_last = time.monotonic()
             return 0
         else:
             self.time_left = time.monotonic() - self.time_last
-            self.time_last = time.monotonic()
             return self.time_left
