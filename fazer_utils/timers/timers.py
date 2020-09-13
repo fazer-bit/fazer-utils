@@ -22,13 +22,13 @@ class TimerPlus:
         check_data(sec, self.minimum, self.name)
         self.last_time = None
         self.sec = sec
-        self.restart()
+        self.reset()
 
     def set_sec(self, sec):
         check_data(sec, self.minimum, self.name)
         self.sec = sec
 
-    def restart(self):
+    def reset(self):
         """Сбросить таймер в минимум"""
         self.last_time = time.monotonic()
 
@@ -51,13 +51,13 @@ class TimerMinus:
         check_data(sec, self.minimum, self.name)
         self.last_time = None
         self.sec = sec
-        self.restart()
+        self.reset()
 
     def set_sec(self, sec):
         check_data(sec, self.minimum, self.name)
         self.sec = sec
 
-    def restart(self):
+    def reset(self):
         """Сбросить таймер в минимум"""
         self.last_time = time.monotonic()
 
@@ -88,7 +88,7 @@ class TimerStep:
         self.multiplier = multiplier
         self.last_time = None
         self.current_delay = None
-        self.restart()
+        self.reset()
 
     def set_timer(self, min_s, max_s, multiplier):
         check_data(min_s, self.minimum, self.name + " arg(1)")
@@ -98,7 +98,7 @@ class TimerStep:
         self.max_s = max_s
         self.multiplier = multiplier
 
-    def restart(self):
+    def reset(self):
         """Сбросить таймер в минимум"""
         self.last_time = time.monotonic()
         self.current_delay = self.min_s
@@ -124,7 +124,7 @@ class TimerLast:
         self.time_last = None
         self.time_left = None
 
-    def restart(self):
+    def reset(self):
         self.time_last = time.monotonic()
 
     def get(self):

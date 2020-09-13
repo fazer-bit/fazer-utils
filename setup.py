@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 with open("README.md", encoding="utf8") as fh:
     long_description = fh.read()
-__version__ = "0.4.0"
+__version__ = "0.6.0"
 
 setup(
     name="fazer_utils",
