@@ -2,6 +2,7 @@ import time
 
 _minimum = 0.0001
 
+
 def check_data(data, minimum, name):
     if isinstance(data, (int, float)):
         if data >= minimum:
@@ -120,7 +121,7 @@ class TimerStep:
 
 
 class TimerLast:
-    """Отдаёт количество секунд прошедшее с момента последнего запроса."""
+    """Отдаёт количество секунд прошедшее с момента последнего reset()."""
     def __init__(self):
         self.time_last = None
         self.time_left = None
