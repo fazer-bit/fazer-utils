@@ -103,9 +103,13 @@ class TimerStep:
             check_data(args[2], 1, self.name + " arg(3)")
         except Exception:
             raise TimerArgsError("TimerStep.set_timer: Необходимы 3 аргумента int или float.")
-        self.min_s = args[0]
-        self.max_s = args[1]
-        self.multiplier = args[2]
+        if self.min_s == args[0] and self.max_s == args[1] and self.multiplier == args[2]:
+            pass
+        else:
+            self.min_s = args[0]
+            self.max_s = args[1]
+            self.multiplier = args[2]
+            self.reset()
 
     def reset(self):
         """Сбросить таймер в минимум"""
