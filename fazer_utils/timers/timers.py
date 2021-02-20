@@ -102,7 +102,7 @@ class TimerStep:
             check_data(args[1], args[0], self.name + " arg(2)")
             check_data(args[2], 1, self.name + " arg(3)")
         except Exception:
-            raise TimerArgsError("Необходимы 3 аргумента int или float.")
+            raise TimerArgsError("TimerStep.set_timer: Необходимы 3 аргумента int или float.")
         self.min_s = args[0]
         self.max_s = args[1]
         self.multiplier = args[2]
