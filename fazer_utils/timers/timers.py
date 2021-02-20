@@ -1,6 +1,10 @@
 import time
 
+class TimerArgsError(Exception):
+    pass
+
 _minimum = 0.0001
+
 
 
 def check_data(data, minimum, name):
@@ -8,9 +12,9 @@ def check_data(data, minimum, name):
         if data >= minimum:
             return True
         else:
-            raise ValueError(f"{name}: Значение {data} не должно быть меньше {minimum}.")
+            raise TimerArgsError(f"{name}: Значение {data} не должно быть меньше {minimum}.")
     else:
-        raise TypeError(f"{name}: {data} имеет {type(data)}, а должен быть int или float.")
+        raise TimerArgsError(f"{name}: {data} имеет {type(data)}, а должен быть int или float.")
 
 
 class TimerPlus:
@@ -92,13 +96,16 @@ class TimerStep:
         self.current_delay = None
         self.reset()
 
-    def set_timer(self, min_s, max_s, multiplier):
-        check_data(min_s, self.minimum, self.name + " arg(1)")
-        check_data(max_s, min_s, self.name + " arg(2)")
-        check_data(multiplier, 1, self.name + " arg(3)")
-        self.min_s = min_s
-        self.max_s = max_s
-        self.multiplier = multiplier
+    def set_timer(self, *args):
+        try:
+            check_data(args[0], self.minimum, self.name + " arg(1)")
+            check_data(args[1], args[0], self.name + " arg(2)")
+            check_data(args[2], 1, self.name + " arg(3)")
+        except Exception:
+            raise TimerArgsError("Необходимы 3 аргумента int или float.")
+        self.min_s = args[0]
+        self.max_s = args[1]
+        self.multiplier = args[2]
 
     def reset(self):
         """Сбросить таймер в минимум"""
