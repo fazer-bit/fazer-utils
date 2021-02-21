@@ -96,13 +96,16 @@ class TimerStep:
         self.current_delay = None
         self.reset()
 
-    def set_timer(self, *args):
-        try:
-            check_data(args[0], self.minimum, self.name + " arg(1)")
-            check_data(args[1], args[0], self.name + " arg(2)")
-            check_data(args[2], 1, self.name + " arg(3)")
-        except Exception:
+    def checker(self, *args):
+        """Проверка аргументов без изменения параметров"""
+        if len(args) != 3:
             raise TimerArgsError("TimerStep.set_timer: Необходимы 3 аргумента int или float.")
+        check_data(args[0], self.minimum, self.name + " arg(1)")
+        check_data(args[1], args[0], self.name + " arg(2)")
+        check_data(args[2], 1, self.name + " arg(3)")
+
+    def set_timer(self, *args):
+        self.checker(*args)
         if self.min_s == args[0] and self.max_s == args[1] and self.multiplier == args[2]:
             pass
         else:
